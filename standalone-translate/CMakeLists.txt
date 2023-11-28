@@ -14,7 +14,8 @@ target_link_libraries(standalone-translate
   ${dialect_libs}
   ${translation_libs}
   MLIRIR
-  MLIRParser
+  #MLIRParser
+  MLIRFormatParser
   MLIRPass
   MLIRSPIRVDialect
   MLIRTranslateLib

@@ -9,7 +9,8 @@ add_mlir_library(MLIRFormatLib
   MLIRDebug
   MLIRObservers
   MLIRPass
-  MLIRParser
+  # MLIRParser
+  MLIRFormatParser
   MLIRPluginsLib
   MLIRSupport
   MLIRIRDL

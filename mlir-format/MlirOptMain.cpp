@@ -12,6 +12,8 @@
 //===----------------------------------------------------------------------===//
 
 #include "mlir/Tools/mlir-opt/MlirOptMain.h"
+#include "mlir-format/ParseUtilities.h"
+#include "mlir-format/Parser.h"
 #include "mlir/Bytecode/BytecodeWriter.h"
 #include "mlir/Debug/CLOptionsSetup.h"
 #include "mlir/Debug/Counter.h"
@@ -27,13 +29,11 @@
 #include "mlir/IR/Dialect.h"
 #include "mlir/IR/Location.h"
 #include "mlir/IR/MLIRContext.h"
-#include "mlir/Parser/Parser.h"
 #include "mlir/Pass/Pass.h"
 #include "mlir/Pass/PassManager.h"
 #include "mlir/Support/FileUtilities.h"
 #include "mlir/Support/Timing.h"
 #include "mlir/Support/ToolUtilities.h"
-#include "mlir/Tools/ParseUtilities.h"
 #include "mlir/Tools/Plugins/DialectPlugin.h"
 #include "mlir/Tools/Plugins/PassPlugin.h"
 #include "llvm/ADT/StringRef.h"
@@ -356,7 +356,8 @@ performActions(raw_ostream &os,
 
   // Parse the input file and reset the context threading state.
   TimingScope parserTiming = timing.nest("Parser");
-  OwningOpRef<Operation *> op = parseSourceFileForTool(
+  llvm::outs() << "Running parseSourceFile\n";
+  OwningOpRef<Operation *> op = parseSourceFileForToolFmt(
       sourceMgr, parseConfig, !config.shouldUseExplicitModule());
   parserTiming.stop();
   if (!op)
