@@ -521,7 +521,6 @@ LogicalResult mlir::MlirOptMain(int argc, char **argv,
                                 llvm::StringRef inputFilename,
                                 llvm::StringRef outputFilename,
                                 DialectRegistry &registry) {
-  llvm::outs() << "Running custom MLIR opt";
   InitLLVM y(argc, argv);
 
   MlirOptMainConfig config = MlirOptMainConfig::createFromCLOptions();
@@ -557,7 +556,7 @@ LogicalResult mlir::MlirOptMain(int argc, char **argv,
 
 LogicalResult mlir::MlirOptMain(int argc, char **argv, llvm::StringRef toolName,
                                 DialectRegistry &registry) {
-  llvm::outs() << "Running custom MLIR opt";
+  llvm::outs() << "Running custom MLIR opt\n";
   // Register and parse command line options.
   std::string inputFilename, outputFilename;
   std::tie(inputFilename, outputFilename) =
